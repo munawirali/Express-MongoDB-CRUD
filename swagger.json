@@ -1,0 +1,532 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a assignment Store King Server. For this sample, you can use the api key `special-key` to test the authorization filters.",
+    "version": "1.0.0",
+    "title": "Store King",
+    "termsOfService": "",
+    "contact": {
+      "email": "munawirali@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/dishes": {
+      "post": {
+        "tags": [
+          "dishes"
+        ],
+        "summary": "Add a new dishes",
+        "description": "",
+        "operationId": "addDishes",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dishes object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dishes"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "dishes"
+        ],
+        "summary": "Returns list of dishes",
+        "description": "Returns list of dishes",
+        "operationId": "getDishes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/dishes/{id}": {
+      "get": {
+        "tags": [
+          "dishes"
+        ],
+        "summary": "Returns dishes by id",
+        "description": "Returns dishes by id",
+        "operationId": "getDishesById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need as parameter",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "dishes"
+        ],
+        "summary": "Updated dishes",
+        "description": "update dishes",
+        "operationId": "updateDishes",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Updated dishes object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dishes"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succes"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "dishes"
+        ],
+        "summary": "Deleted dishes",
+        "description": "deleted dishes",
+        "operationId": "deletedDishes",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succes"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      }
+    },
+    "/promotions": {
+      "post": {
+        "tags": [
+          "promotion"
+        ],
+        "summary": "Add a new promotions",
+        "description": "",
+        "operationId": "addPromotion",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Promotion object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "promotion"
+        ],
+        "summary": "Returns list of dishes",
+        "description": "Returns list of promotion",
+        "operationId": "getPromotion",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/promotions/{id}": {
+      "get": {
+        "tags": [
+          "promotion"
+        ],
+        "summary": "Returns promotion by id",
+        "description": "Returns promotion by id",
+        "operationId": "getPromotionById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need as parameter",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "promotion"
+        ],
+        "summary": "Updated promotion",
+        "description": "update promotion",
+        "operationId": "updatePromotion",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Updated promotion object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succes"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "promotion"
+        ],
+        "summary": "Deleted promotion",
+        "description": "deleted promotion",
+        "operationId": "deletedPromotion",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succes"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      }
+    },
+    "/leadership": {
+      "post": {
+        "tags": [
+          "leadership"
+        ],
+        "summary": "Add a new leadership",
+        "description": "",
+        "operationId": "addLeadership",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Leadership object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Leadership"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "leadership"
+        ],
+        "summary": "Returns list of leadership",
+        "description": "Returns list of leadership",
+        "operationId": "getLeadership",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/leadership/{id}": {
+      "get": {
+        "tags": [
+          "leadership"
+        ],
+        "summary": "Returns leadership by id",
+        "description": "Returns leadership by id",
+        "operationId": "getLeadershipById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need as parameter",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "leadership"
+        ],
+        "summary": "Updated leadership",
+        "description": "update leadership",
+        "operationId": "updateLeadership",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Updated Leadership object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Leadership"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succes"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "leadership"
+        ],
+        "summary": "Deleted leadership",
+        "description": "deleted leadership",
+        "operationId": "deletedLeadership",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succes"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Dishes": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "fried chiken"
+        }
+      }
+    },
+    "Promotion": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "New Year"
+        }
+      }
+    },
+    "Leadership": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Authentic Leadership"
+        }
+      }
+    }
+  }
+}
