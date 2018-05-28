@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 
 
 var LeaderSchema = new Schema({
-    name  : { type:String }
+    name  : { type:String, required: true }
 });
 
 module.exports = mongoose.model('Leader', LeaderSchema);

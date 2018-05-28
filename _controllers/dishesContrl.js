@@ -24,7 +24,11 @@ module.exports.findById = (req,res) => {
 }
 
 module.exports.create = (req,res) => {
-  dishes.create({name:req.body.name})
+  // you can add validation manually error or you can add in model required true
+  // dishes.create(req.body)
+  if (!req.body.name || req.body.name.trim === '') send.error(res,null,'field name not found / is null')
+  else
+  dishes.create({name:req.body.name})  
   .then(data => {
     send.success(res,null,'Create Data Success', data)
   })
@@ -35,6 +39,8 @@ module.exports.create = (req,res) => {
 }
 
 module.exports.update = (req,res) => {
+  if (!req.body.name || req.body.name.trim === '') send.error(res,null,'field name not found / is null')
+  else
   dishes.findOneAndUpdate({
     _id:req.params.id
   },{

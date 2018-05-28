@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 
 
 var PromoSchema = new Schema({
-    name  : { type:String }
+    name  : { type:String, required:true }
 });
 
 module.exports = mongoose.model('Promo', PromoSchema);

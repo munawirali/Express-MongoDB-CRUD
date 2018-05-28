@@ -1,8 +1,8 @@
-const dishes = require('../_models/promoModel')
+const promo = require('../_models/promoModel')
 const send = require('../_lib/response')
 
 module.exports.findAll = (req,res) => {
-  dishes.find({})
+  promo.find({})
   .then(data => {
     send.success(res,null,'Fetch Data Success', data)
   })
@@ -13,7 +13,7 @@ module.exports.findAll = (req,res) => {
 }
 
 module.exports.findById = (req,res) => {
-  dishes.findById(req.params.id)
+  promo.findById(req.params.id)
   .then(data => {
     send.success(res,null,'Fetch Data Success', data)
   })
@@ -24,7 +24,11 @@ module.exports.findById = (req,res) => {
 }
 
 module.exports.create = (req,res) => {
-  dishes.create({name:req.body.name})
+  // you can add validation manually error or you can add in model required true
+  // dishes.create(req.body)
+  if (!req.body.name || req.body.name.trim === '') send.error(res,null,'field name not found / is null')
+  else
+  promo.create({name:req.body.name})
   .then(data => {
     send.success(res,null,'Create Data Success', data)
   })
@@ -35,7 +39,11 @@ module.exports.create = (req,res) => {
 }
 
 module.exports.update = (req,res) => {
-  dishes.findOneAndUpdate({
+  // you can add validation manually error or you can add in model required true
+  // dishes.create(req.body)
+  if (!req.body.name || req.body.name.trim === '') send.error(res,null,'field name not found / is null')
+  else
+  promo.findOneAndUpdate({
     _id:req.params.id
   },{
     name:req.body.name
@@ -50,7 +58,7 @@ module.exports.update = (req,res) => {
 }
 
 module.exports.remove = (req,res) => {
-  dishes.findOneAndRemove({
+  promo.findOneAndRemove({
     _id:req.params.id
   })
   .then(data => {
